@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   
   has_many :posts
   
+  attr_protected :is_admin
+  
   def is_admin?
     is_admin
   end
