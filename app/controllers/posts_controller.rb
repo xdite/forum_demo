@@ -5,7 +5,6 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    
     redirect_to board_path(@board)
   end
 
@@ -24,7 +23,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.xml
   def new
-    
+
     @post = @board.posts.build
 
     respond_to do |format|
@@ -35,8 +34,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    
-    @post = @board.posts.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   # POST /posts
@@ -44,7 +42,8 @@ class PostsController < ApplicationController
   def create
     
     @post = @board.posts.build(params[:post])
-
+    @post.user_id = current_user.id
+    
     respond_to do |format|
       if @post.save
         format.html { redirect_to(board_post_path(@board,@post), :notice => 'Post was successfully created.') }
@@ -60,7 +59,7 @@ class PostsController < ApplicationController
   # PUT /posts/1.xml
   def update
     
-    @post = @board.posts.find(params[:id])
+    @post = current_user.posts.find(params[:id])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -77,7 +76,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.xml
   def destroy
     
-    @post = @board.posts.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.destroy
 
     respond_to do |format|
