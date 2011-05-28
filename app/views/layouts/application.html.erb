@@ -9,7 +9,8 @@
 <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<%= yield %>
+  <%= render :partial => "common/user_nav" %>
+  <%= yield %>
 
 </body>
 </html>
