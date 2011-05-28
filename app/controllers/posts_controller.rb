@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   
   before_filter :find_board
+  before_filter :authenticate_user! , :except => [ :show, :index ]
   # GET /posts
   # GET /posts.xml
   def index
