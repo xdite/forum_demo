@@ -4,6 +4,6 @@ class AddUserIdToPost < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column, :posts, :user_id
+    remove_column :posts, :user_id
   end
 end
