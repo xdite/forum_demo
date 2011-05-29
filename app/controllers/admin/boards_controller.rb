@@ -1,5 +1,8 @@
 class Admin::BoardsController < ApplicationController
   layout 'admin'
+  
+  before_filter :require_is_admin
+  
   # GET /boards
   # GET /boards.xml
   def index
