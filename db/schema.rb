@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529014114) do
+ActiveRecord::Schema.define(:version => 20110529172625) do
 
   create_table "boards", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,10 @@ ActiveRecord::Schema.define(:version => 20110529014114) do
     t.datetime "updated_at"
     t.integer  "board_id"
     t.integer  "user_id"
+    t.string   "excerpt_image_file_name"
+    t.string   "excerpt_image_content_type"
+    t.integer  "excerpt_image_file_size"
+    t.datetime "excerpt_image_updated_at"
   end
 
   create_table "users", :force => true do |t|
