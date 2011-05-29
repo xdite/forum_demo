@@ -12,12 +12,16 @@
   <tr>
     <td><%= board.name %></td>
     <td><%= link_to 'Show', board %></td>
-    <td><%= link_to 'Edit', edit_board_path(board) %></td>
-    <td><%= link_to 'Destroy', board, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% if current_user && current_user.is_admin? %>
+      <td><%= link_to 'Edit', edit_admin_board_path(board) %></td>
+      <td><%= link_to 'Destroy', admin_boards_path , :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Board', new_board_path %>
+<% if current_user && current_user.is_admin? %>
+  <%= link_to 'New Board', new_admin_board_path %>
+<% end %>
