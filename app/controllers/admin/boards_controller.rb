@@ -14,18 +14,6 @@ class Admin::BoardsController < ApplicationController
     end
   end
 
-  # GET /boards/1
-  # GET /boards/1.xml
-  def show
-    @board = Board.find(params[:id])
-    @posts = @board.posts
-    
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @board }
-    end
-  end
-
   # GET /boards/new
   # GET /boards/new.xml
   def new
@@ -49,7 +37,7 @@ class Admin::BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.save
-        format.html { redirect_to(admin_board_path(@board), :notice => 'Board was successfully created.') }
+        format.html { redirect_to(board_path(@board), :notice => 'Board was successfully created.') }
         format.xml  { render :xml => @board, :status => :created, :location => @board }
       else
         format.html { render :action => "new" }
@@ -65,7 +53,7 @@ class Admin::BoardsController < ApplicationController
 
     respond_to do |format|
       if @board.update_attributes(params[:board])
-        format.html { redirect_to(admin_board_path(@board), :notice => 'Board was successfully updated.') }
+        format.html { redirect_to(board_path(@board), :notice => 'Board was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -25,6 +25,11 @@
       <td><%= link_to 'Edit', edit_board_post_path(@board,post) %></td>
       <td><%= link_to 'Destroy', board_post_path(@board,post), :confirm => 'Are you sure?', :method => :delete %></td>
     <% end %>
+    
+    <% if current_user.is_admin? %>
+      <td><%= link_to 'A-Edit', edit_admin_board_post_path(@board,post) %></td>
+      <td><%= link_to 'A-Destroy', admin_board_post_path(@board,post), :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
@@ -32,5 +37,5 @@
 <br />
 
 <%= link_to 'New Post', new_board_post_path(@board) %> |
-<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'A-Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>
