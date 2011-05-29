@@ -1,0 +1,23 @@
+<h1>Listing boards</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @boards.each do |board| %>
+  <tr>
+    <td><%= board.name %></td>
+    <td><%= link_to 'Show', board %></td>
+    <td><%= link_to 'Edit', edit_board_path(board) %></td>
+    <td><%= link_to 'Destroy', board, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Board', new_board_path %>

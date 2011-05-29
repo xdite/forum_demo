@@ -6,6 +6,12 @@ ForumDemo::Application.routes.draw do
     resources :posts
   end
 
+  namespace :admin do
+    resources :boards do
+      resources :posts
+    end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
