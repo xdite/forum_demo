@@ -1,5 +1,5 @@
 <h1>Editing post</h1>
-<%= form_for @post, :url => board_post_path(@board,@post) do |f| %>
+<%= form_for @post, :url => board_post_path(@board,@post), :html => { :multipart => true } do |f| %>
 <%= render :partial => 'form', :locals => { :f => f } %>
 <% end %>
 <%= link_to 'Show', board_post_path(@board,@post) %> |
