@@ -9,8 +9,11 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Title</th>
     <th>Content</th>
+    <th>Created At</th>
+    <th>Updated At</th>
     <th></th>
     <th></th>
     <th></th>
@@ -18,8 +21,11 @@
 
 <% @posts.each do |post| %>
   <tr>
+    <td><%= post.id%> </td>
     <td><%= post.title %></td>
     <td><%= post.content %></td>
+    <td><%= l(post.created_at, :format => :short)%> </td>
+    <td><%= l(post.updated_at, :format => :short)%> </td>
     <td><%= link_to 'Show', board_post_path(@board,post) %></td>
     <% if post.user == current_user %>
       <td><%= link_to 'Edit', edit_board_post_path(@board,post) %></td>
