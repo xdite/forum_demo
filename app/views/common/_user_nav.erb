@@ -1,14 +1,12 @@
 <div class="user_navigation">
   <% if user_signed_in? %>
       Hi! <%= current_user.email %>
-      <%= link_to("Sign out", destroy_user_session_path)%>
-      <% if current_user.is_admin? %>
-        <%= link_to("Admin Panel", admin_boards_path )%>
-      <% end %>
+      <%= link_to("Sign out", destroy_user_session_path, :method => :delete )%>
+	  <% if current_user && current_user.is_admin? %>
+	    <%= link_to("Admin Panel", admin_boards_path )%>
+	  <% end %>
   <% else %>
       <%= link_to "Sign in", new_user_session_path %>
       <%= link_to "Sign up", new_user_registration_path %>
   <% end %>
 </div>
-
-

@@ -10,18 +10,20 @@
   <%= @post.content %>
 </p>
 
-<% if @post.excerpt_image %>
+<% if @post.excerpt_image.present? %>
 <p>
-  <%= image_tag(@post.excerpt_image.url) %>
+  <%= image_tag(@post.excerpt_image.url(:medium)) %>
 </p>
 <% end %>
 
-<% if @post.user == current_user %>
-  <%= link_to 'Edit', edit_board_post_path(@board,@post) %> |
+<% if current_user && @post.user == current_user %>
+<%= link_to 'Edit', edit_board_post_path(@board,@post) %> |
 <% end %>
 
-<% if current_user.is_admin? %>
+
+<% if current_user && current_user.is_admin? %>
   <%= link_to 'A-Edit', edit_admin_board_post_path(@board,@post) %> |
 <% end %>
+
 
 <%= link_to 'Back', board_posts_path(@board) %>

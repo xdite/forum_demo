@@ -18,4 +18,3 @@ board = Board.create!(:name => "System Announcent")
 post = board.posts.build(:title => "First Post", :content => "This is a demo post")
 post.user = admin
 post.save!
-

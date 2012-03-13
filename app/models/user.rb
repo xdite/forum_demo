@@ -8,10 +8,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   has_many :posts
-  
-  attr_protected :is_admin
-  
+
   def is_admin?
     is_admin
   end
+  
 end

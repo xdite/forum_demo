@@ -2,17 +2,16 @@
 <html>
 <head>
   <title>ForumDemo</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
 </head>
 <body>
-  <h1> Admin Panel </h1>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  <%= render :partial => "common/user_nav" %>
-  
-  <%= yield %>
+
+<h1> Admin Panel </h1>
+
+<%= render :partial => "common/user_nav" %>
+<%= yield %>
 
 </body>
 </html>

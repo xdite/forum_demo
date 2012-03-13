@@ -2,18 +2,15 @@
 
 <p>
   <b>Name:</b>
-  <%= @board.name %> 
+  <%= @board.name %>
 </p>
 
 <h1>Listing posts - Total <%= @board.posts.size %> posts </h1>
 
 <table>
   <tr>
-    <th>ID</th>
     <th>Title</th>
     <th>Content</th>
-    <th>Created At</th>
-    <th>Updated At</th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,20 +18,18 @@
 
 <% @posts.each do |post| %>
   <tr>
-    <td><%= post.id%> </td>
     <td><%= post.title %></td>
     <td><%= post.content %></td>
-    <td><%= l(post.created_at, :format => :short)%> </td>
-    <td><%= l(post.updated_at, :format => :short)%> </td>
-    <td><%= link_to 'Show', board_post_path(@board,post) %></td>
-    <% if post.user == current_user %>
-      <td><%= link_to 'Edit', edit_board_post_path(@board,post) %></td>
-      <td><%= link_to 'Destroy', board_post_path(@board,post), :confirm => 'Are you sure?', :method => :delete %></td>
-    <% end %>
+    <td><%= link_to 'Show', board_post_path(@board) %></td>
+     <% if current_user && post.user == current_user %>
+    <td><%= link_to 'Edit', edit_board_post_path(@board,post) %></td>
+    <td><%= link_to 'Destroy', board_post_path(@board,post), confirm: 'Are you sure?', method: :delete %></td>
     
     <% if current_user && current_user.is_admin? %>
       <td><%= link_to 'A-Edit', edit_admin_board_post_path(@board,post) %></td>
-      <td><%= link_to 'A-Destroy', admin_board_post_path(@board,post), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to 'A-Destroy', admin_board_post_path(@board,post),
+           :confirm => 'Are you sure?',:method => :delete %></td>
+    <% end %>
     <% end %>
   </tr>
 <% end %>
@@ -43,8 +38,8 @@
 <%= will_paginate(@posts)%>
 <br />
 
-<%= link_to 'New Post', new_board_post_path(@board) %> |
-<% if current_user && current_user.is_admin? %>
-     <%= link_to 'A-Edit', edit_admin_board_path(@board) %> |
- <% end %>
+<%= link_to 'New Post', new_board_post_path(@board) %>
+
+
+<%= link_to 'A-Edit', edit_admin_board_path(@board) if current_user && current_user.is_admin? %> |
 <%= link_to 'Back', boards_path %>
